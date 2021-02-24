@@ -1,17 +1,9 @@
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    hostname: localhost
-microservice:
-  payment-service:
-    endpoints:
-      endpoint:
-        uri: http://payment-servie/payment/doPayment
-  order-service:
-    endpoints:
-      endpoint:
-        uri: http://order-servie/order/bookOrder
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: guides
+          predicates:
+            - Path=/guides
+            - After=2024-09-02T00:00:00.000-00:00[America/Denver]
+          uri: https://spring.io
